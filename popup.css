@@ -1,0 +1,99 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #fbf7ff;
+  background: #140a25;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  width: 352px;
+  min-height: 302px;
+  background:
+    radial-gradient(circle at 10% 0, rgba(187, 96, 255, .30), transparent 42%),
+    radial-gradient(circle at 100% 8%, rgba(107, 33, 211, .28), transparent 46%),
+    #140a25;
+}
+
+main { padding: 18px; }
+
+header {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+header img {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  box-shadow: 0 0 22px rgba(181, 91, 255, .35);
+}
+
+h1 { margin: 0; font-size: 19px; }
+header p { margin: 5px 0 0; color: #cbb4dc; font-size: 12px; }
+
+.switch { position: relative; width: 42px; height: 24px; }
+.switch input { position: absolute; opacity: 0; }
+.switch span {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: #4d3a5f;
+  transition: .2s ease;
+}
+.switch span::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px #0008;
+  transition: .2s ease;
+}
+.switch input:checked + span { background: linear-gradient(90deg, #9d3bff, #d05cff); }
+.switch input:checked + span::after { transform: translateX(18px); }
+
+.card {
+  padding: 17px;
+  border: 1px solid rgba(200, 139, 255, .18);
+  border-radius: 17px;
+  background: rgba(41, 20, 68, .78);
+  box-shadow: inset 0 1px rgba(255,255,255,.04), 0 14px 34px #05010955;
+}
+
+.label { display: block; color: #bfa2d8; font-size: 12px; font-weight: 700; }
+.card strong { display: block; margin-top: 5px; font-size: 30px; line-height: 1; color: #d889ff; letter-spacing: .08em; }
+.details { display: flex; gap: 7px; margin-top: 15px; }
+.details span {
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: #4b2670;
+  color: #ead7fb;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+#test {
+  width: 100%;
+  height: 44px;
+  margin-top: 13px;
+  border: 0;
+  border-radius: 13px;
+  background: linear-gradient(105deg, #9635f0, #c44eff 72%, #e073ff);
+  color: white;
+  font: 850 14px inherit;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(148, 44, 230, .32);
+}
+#test:hover { filter: brightness(1.08); }
+#test:active { transform: translateY(1px); }
+
+#status { min-height: 18px; margin: 9px 0 -4px; text-align: center; color: #bca5d0; font-size: 11px; }

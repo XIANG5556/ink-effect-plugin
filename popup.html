@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ink特效插件</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <header>
+      <img src="assets/icon-128.png" alt="">
+      <div>
+        <h1>ink特效插件</h1>
+        <p>输入独立英文单词 ink 自动触发</p>
+      </div>
+      <label class="switch" title="启用或停用">
+        <input id="enabled" type="checkbox">
+        <span></span>
+      </label>
+    </header>
+
+    <section class="card">
+      <span class="label">触发词</span>
+      <strong>ink</strong>
+      <div class="details">
+        <span>亮紫色墨汁</span>
+        <span>喷墨音效</span>
+        <span>约 4.2 秒</span>
+      </div>
+    </section>
+
+    <button id="test" type="button">在当前网页预览</button>
+    <p id="status" role="status"></p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
