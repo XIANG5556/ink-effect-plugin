@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "ink特效插件",
   "version": "1.0.0",
-  "description": "网页、搜索框或评论区出现独立英文单词 ink 时，弹出亮紫色立体墨汁特效并播放喷墨音效。",
+  "description": "网页、搜索框或评论区出现独立英文单词 ink 时，弹出亮紫色立体墨汁特效。",
   "permissions": ["storage", "activeTab"],
   "action": {
     "default_title": "ink特效插件",
@@ -31,7 +31,7 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["assets/ink-splash.png", "assets/ink-spray-sound.mp3"],
+      "resources": ["assets/ink-splash.png"],
       "matches": ["<all_urls>"]
     }
   ]

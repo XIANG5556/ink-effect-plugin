@@ -5,23 +5,17 @@
   const DEFAULTS = { enabled: true };
   const TRIGGER = 'ink';
   const EFFECT_URL = chrome.runtime.getURL('assets/ink-splash.png');
-  const SOUND_URL = chrome.runtime.getURL('assets/ink-spray-sound.mp3');
 
   let settings = { ...DEFAULTS };
   let lastTriggerAt = 0;
   let scanTimer = 0;
   let lastLocation = location.href;
   let pageHadTrigger = false;
-  let activeAudio = null;
   const inputMatchState = new WeakMap();
 
   const splashPreload = new Image();
   splashPreload.src = EFFECT_URL;
   if (splashPreload.decode) splashPreload.decode().catch(() => {});
-
-  const soundPreload = new Audio(SOUND_URL);
-  soundPreload.preload = 'auto';
-  soundPreload.load();
 
   chrome.storage.sync.get(DEFAULTS, value => {
     settings = { ...DEFAULTS, ...value };
@@ -46,32 +40,6 @@
   function containsTrigger(text) {
     const escaped = TRIGGER.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     return new RegExp(`(^|[^a-z0-9])${escaped}([^a-z0-9]|$)`, 'i').test(String(text || ''));
-  }
-
-  function playSound(stage) {
-    if (activeAudio) {
-      activeAudio.pause();
-      activeAudio.currentTime = 0;
-      activeAudio = null;
-    }
-
-    const audio = soundPreload.cloneNode();
-    audio.className = 'ink-fx-audio';
-    audio.setAttribute('aria-hidden', 'true');
-    audio.preload = 'auto';
-    audio.volume = 1;
-    activeAudio = audio;
-    stage.appendChild(audio);
-
-    const playback = audio.play();
-    if (playback?.catch) {
-      playback.catch(() => {
-        if (activeAudio === audio) activeAudio = null;
-      });
-    }
-    audio.addEventListener('ended', () => {
-      if (activeAudio === audio) activeAudio = null;
-    }, { once: true });
   }
 
   function playEffect() {
@@ -101,7 +69,6 @@
     character.appendChild(image);
     stage.appendChild(character);
     (document.documentElement || document.body).appendChild(stage);
-    playSound(stage);
     window.setTimeout(() => stage.remove(), 4250);
   }
 

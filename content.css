@@ -44,10 +44,6 @@
   -webkit-user-drag: none;
 }
 
-.ink-fx-audio {
-  display: none;
-}
-
 .ink-fx-ring {
   position: absolute;
   left: 50%;
